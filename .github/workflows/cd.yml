@@ -89,7 +89,7 @@ jobs:
             --boost-prefix $(pwd) \
             --install \
             --install-prefix $(pwd)/dist
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v6
         with:
           name: ${{ matrix.os_short }}-cxx-${{ matrix.architecture }}
           path: |
@@ -194,7 +194,7 @@ jobs:
         with:
           platforms: arm64
       - name: Build wheels
-        uses: pypa/cibuildwheel@v2.11.2
+        uses: pypa/cibuildwheel@v3.3.1
         env:
           CIBW_BUILD: "cp${{ matrix.python_version }}-*"
           CIBW_PLATFORM: "${{ matrix.os_short }}"
