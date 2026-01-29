@@ -430,9 +430,7 @@ build_pythonlib() {
         # forward cmake args
         export CMAKE_ARGS="${OCL_GENERATOR:+"-G ${OCL_GENERATOR} "}\
 ${OCL_GENERATOR_PLATFORM:+"-A ${OCL_GENERATOR_PLATFORM} "}\
--D CMAKE_BUILD_TYPE=${build_type} \
--D Boost_ADDITIONAL_VERSIONS=${boost_additional_versions} \
-${OCL_BOOST_PREFIX:+"-D BOOST_ROOT=${OCL_BOOST_PREFIX} "}"
+-D CMAKE_BUILD_TYPE=${build_type} \"}"
         cd "${project_dir}"
         ${python_executable} -m pip install --verbose .
     else
@@ -445,11 +443,9 @@ ${OCL_BOOST_PREFIX:+"-D BOOST_ROOT=${OCL_BOOST_PREFIX} "}"
             ${OCL_GENERATOR_PLATFORM:+"-A ${OCL_GENERATOR_PLATFORM}"} \
             -D CMAKE_BUILD_TYPE="${build_type}" \
             -D BUILD_PY_LIB="ON" \
-            -D Boost_ADDITIONAL_VERSIONS="${boost_additional_versions}" \
             -D CMAKE_INSTALL_PREFIX="${OCL_INSTALL_PREFIX:-"${install_prefix_fallback}"}" \
             ${OCL_DISABLE_OPENMP:+"-DUSE_OPENMP=OFF"} \
             ${OCL_PYTHON_PREFIX:+"-DPython3_ROOT_DIR=${OCL_PYTHON_PREFIX}"} \
-            ${OCL_BOOST_PREFIX:+"-DBOOST_ROOT=${OCL_BOOST_PREFIX}"} \
             ../../..
         set +x
         cmake_build
