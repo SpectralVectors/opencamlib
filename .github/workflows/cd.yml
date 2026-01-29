@@ -113,11 +113,11 @@ jobs:
         ]
         python_version: [
           "37",
-          "38",
-          "39",
-          "310",
-          "311",
-          "312",
+          # "38",
+          # "39",
+          # "310",
+          # "311",
+          # "312",
           "313",
         ]
         exclude:
@@ -226,7 +226,7 @@ jobs:
       #     if [ -d "boost_1_80_0" ]; then
       #       tar -czf boost-precompiled.tar.gz boost_1_80_0 || true
       #     fi
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v6
         with:
           name: ${{ matrix.os_short }}-python-${{ matrix.architecture }}
           path: |
