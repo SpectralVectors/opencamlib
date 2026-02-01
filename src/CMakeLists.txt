@@ -34,7 +34,7 @@ option(BUILD_CXX_LIB
   "Build/install the pure c++ ocl library? " OFF)
 
 option(BUILD_PY_LIB
-  "Build/install the python ocl library? " OFF)
+  "Build/install the python ocl library? " ON)
 
 option(BUILD_NODEJS_LIB
   "Build/install the node.js ocl library? " OFF)
