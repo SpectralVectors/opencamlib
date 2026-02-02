@@ -96,4 +96,4 @@ jobs:
         with:
           name: ${{ matrix.os_short }}-python-${{ matrix.architecture }}
           path: |
-            ./wheelhouse/*.whl
+            *.whl
