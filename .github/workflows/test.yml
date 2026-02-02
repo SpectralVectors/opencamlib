@@ -108,10 +108,7 @@ jobs:
           name: ${{ matrix.os_short }}-python-${{ matrix.architecture }}
           path: |
             ./wheelhouse/*.whl
+            /tmp/pip-ephem-wheel-cache-*/wheels/63/66/cd/*/*.whl
       - uses: actions/download-artifact@v6
         with:
           path: prebuilds
-      - uses: softprops/action-gh-release@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          files: '*.whl'
