@@ -113,7 +113,5 @@ jobs:
           path: prebuilds
       - uses: softprops/action-gh-release@v1
         with:
-          tags:
-            - v*
           token: ${{ secrets.GITHUB_TOKEN }}
           files: '*.whl'
