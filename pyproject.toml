@@ -39,6 +39,7 @@ build-backend = "scikit_build_core.build"
 cmake.verbose = true
 logging.level = "DEBUG"
 wheel.packages = ["src/pythonlib/opencamlib"]
+build-dir = "wheelhouse/"
 
 [tool.scikit-build.cmake.define]
 BUILD_PY_LIB = "ON"
