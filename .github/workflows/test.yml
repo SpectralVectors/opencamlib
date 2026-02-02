@@ -71,6 +71,17 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: prepare
+        shell: bash
+        run: |
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            version="${GITHUB_REF##*/}"
+          else
+            version="$(date '+%Y.%-m.%-d').dev${GITHUB_RUN_NUMBER}"
+          fi
+          sed -i.bak "s/^version = .*/version = \"${version}\"/g" pyproject.toml && rm pyproject.toml.bak
+          echo "${version}" > src/git-tag.txt
+          
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
@@ -102,5 +113,7 @@ jobs:
           path: prebuilds
       - uses: softprops/action-gh-release@v1
         with:
+          tags:
+            - v*
           token: ${{ secrets.GITHUB_TOKEN }}
           files: '*.whl'
