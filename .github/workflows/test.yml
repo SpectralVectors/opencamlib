@@ -92,3 +92,8 @@ jobs:
             --test
         env:
           CMAKE_GENERATOR: ${{ matrix.cmake_generator }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.os_short }}-python-${{ matrix.architecture }}
+          path: |
+            ./wheelhouse/*.whl
