@@ -96,4 +96,25 @@ jobs:
         with:
           name: ${{ matrix.os_short }}-python-${{ matrix.architecture }}
           path: |
-            ./tmp/*/wheels/63/66/cd/0bb705a8cea6b6f1ea783f64047b50b82686fdffb82ed78303/*.whl
+            ./wheelhouse/*.whl
+
+  publish-github:
+    name: publish to Github
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: [
+      python,
+    ]
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v3
+        with:
+          path: prebuilds
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: |
+            dist/*
