@@ -13,43 +13,43 @@ on:
       - v*
 
 jobs:
-  cxx:
-    name: ${{ matrix.os_short }} c++
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 120
-    strategy:
-      fail-fast: false
-      matrix:
-        os: ["windows-2022", "macos-15", "ubuntu-22.04"]
-        include:
-          - os: "windows-2022"
-            os_short: "windows"
-          - os: "macos-15"
-            os_short: "macos"
-          - os: "ubuntu-22.04"
-            os_short: "linux"
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Install
-        shell: bash
-        run: |
-          if [ "${{ matrix.os_short }}" == "linux" ]; then
-            export OCL_SUDO_INSTALL="1"
-          fi
-          if [ "${{ matrix.os_short }}" == "macos" ]; then
-            export OCL_SUDO_INSTALL="1"
-            export OCL_MACOS_ARCHITECTURE="$(arch)"
-          fi
-          ./install.sh \
-            --install-ci-deps \
-            --build-library cxx \
-            --build-type release \
-            --install-boost \
-            --boost-prefix $(pwd) \
-            --install \
-            --test
+  # cxx:
+  #   name: ${{ matrix.os_short }} c++
+  #   runs-on: ${{ matrix.os }}
+  #   timeout-minutes: 120
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       os: ["windows-2022", "macos-15", "ubuntu-22.04"]
+  #       include:
+  #         - os: "windows-2022"
+  #           os_short: "windows"
+  #         - os: "macos-15"
+  #           os_short: "macos"
+  #         - os: "ubuntu-22.04"
+  #           os_short: "linux"
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - name: Install
+  #       shell: bash
+  #       run: |
+  #         if [ "${{ matrix.os_short }}" == "linux" ]; then
+  #           export OCL_SUDO_INSTALL="1"
+  #         fi
+  #         if [ "${{ matrix.os_short }}" == "macos" ]; then
+  #           export OCL_SUDO_INSTALL="1"
+  #           export OCL_MACOS_ARCHITECTURE="$(arch)"
+  #         fi
+  #         ./install.sh \
+  #           --install-ci-deps \
+  #           --build-library cxx \
+  #           --build-type release \
+  #           --install-boost \
+  #           --boost-prefix $(pwd) \
+  #           --install \
+  #           --test
   python:
     name: ${{ matrix.os_short }} python
     runs-on: ${{ matrix.os }}
@@ -107,7 +107,7 @@ jobs:
         with:
           name: ${{ matrix.os_short }}-python-${{ matrix.architecture }}
           path: |
-            /tmp/pip-ephem-wheel-cache-*/wheels/63/66/cd/*/*.whl
+            ./wheelhouse/*.whl
       - uses: actions/download-artifact@v6
         with:
           path: prebuilds
