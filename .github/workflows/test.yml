@@ -97,4 +97,3 @@ jobs:
           name: ${{ matrix.os_short }}-python-${{ matrix.architecture }}
           path: |
             ./*/*/*/*/*/*/*/*.whl
-            /tmp/pip-ephem-wheel-cache-73sksss3/wheels/63/66/cd/0bb705a8cea6b6f1ea783f64047b50b82686fdffb82ed78303
