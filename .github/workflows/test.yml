@@ -54,7 +54,7 @@ jobs:
           if [ "${{ matrix.os_short }}" == "linux" ]; then
             export OCL_INSTALL_BOOST="1"
             export OCL_BOOST_PREFIX="$(pwd)"
-            export PIP_CACHE_DIR={$HOME}/wheelhouse
+            export PIP_CACHE_DIR="./wheelhouse"
           else
             export OCL_INSTALL_BOOST_FROM_REPO="1"
           fi
@@ -64,7 +64,6 @@ jobs:
             --install-system-deps \
             --python-executable python \
             --python-pip-install \
-            --wheel-dir ./wheelhouse \
             --test
         env:
           CMAKE_GENERATOR: ${{ matrix.cmake_generator }}
