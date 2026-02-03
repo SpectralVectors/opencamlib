@@ -40,7 +40,7 @@ cmake.verbose = true
 experimental = true
 logging.level = "DEBUG"
 wheel.packages = ["src/pythonlib/opencamlib"]
-wheel.install-dir = "/wheelhouse"
+wheel.install-dir = "wheelhouse"
 
 [tool.scikit-build.cmake.define]
 BUILD_PY_LIB = "ON"
