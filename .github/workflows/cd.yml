@@ -11,88 +11,6 @@ on:
       - published
 
 jobs:
-  cxx:
-    name: ${{ matrix.os_short }} c++ ${{ matrix.architecture }}
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 120
-    strategy:
-      fail-fast: false
-      matrix:
-        os_arch: [
-          "windows-ia32",
-          "windows-x64",
-          "macos-x86_64",
-          "macos-arm64",
-          "linux-x86_64",
-          "linux-aarch64",
-        ]
-        include:
-          - os_arch: "windows-ia32"
-            os: "windows-2022"
-            os_short: "windows"
-            architecture: "ia32"
-            cmake_generator_platform: "Win32"
-          - os_arch: "windows-x64"
-            os: "windows-2022"
-            os_short: "windows"
-            architecture: "x64"
-            cmake_generator_platform: "x64"
-          - os_arch: "macos-x86_64"
-            os: "macos-15"
-            os_short: "macos"
-            architecture: "x86_64"
-          - os_arch: "macos-arm64"
-            os: "macos-15"
-            os_short: "macos"
-            architecture: "arm64"
-          - os_arch: linux-x86_64
-            os: "ubuntu-22.04"
-            os_short: "linux"
-            architecture: "x86_64"
-            docker_image: "dockcross/linux-x64:latest"
-          - os_arch: linux-aarch64
-            os: "ubuntu-22.04"
-            os_short: "linux"
-            architecture: "aarch64"
-            docker_image: "dockcross/linux-arm64-lts:latest"
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: cxxlib
-        shell: bash
-        run: |
-          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
-            version="${GITHUB_REF##*/}"
-          else
-            version="$(date '+%Y.%-m.%-d').dev${GITHUB_RUN_NUMBER}"
-          fi
-          echo "${version}" > src/git-tag.txt
-
-          if [ "${{ matrix.docker_image }}" != "" ]; then
-            export OCL_DOCKER_IMAGE="${{ matrix.docker_image }}"
-          fi
-          if [ "${{ matrix.macos_architecture }}" != "" ]; then
-            export OCL_MACOS_ARCHITECTURE="${{ matrix.architecture }}"
-          fi
-          if [ "${{ matrix.cmake_generator_platform }}" != "" ]; then
-            export OCL_GENERATOR_PLATFORM="${{ matrix.cmake_generator_platform }}"
-          fi
-
-          ./install.sh \
-            --build-library cxx \
-            --build-type release \
-            --install-ci-deps \
-            --install-boost \
-            --boost-prefix $(pwd) \
-            --install \
-            --install-prefix $(pwd)/dist
-      - uses: actions/upload-artifact@v4
-        with:
-          name: ${{ matrix.os_short }}-cxx-${{ matrix.architecture }}
-          path: |
-            dist
- 
   python:
     name: ${{ matrix.os_short }} python ${{ matrix.architecture }} cp${{ matrix.python_version }}
     runs-on: ${{ matrix.os }}
@@ -110,12 +28,6 @@ jobs:
           "linux-aarch64",
         ]
         python_version: [
-          "37",
-          "38",
-          "39",
-          "310",
-          "311",
-          "312",
           "313",
         ]
         exclude:
@@ -219,7 +131,7 @@ jobs:
             BOOST_ROOT="$(pwd)"
             OCL_BOOST_ARCHITECTURE="${{ matrix.boost_architecture }}"
             CMAKE_GENERATOR="Unix Makefiles"
-          CIBW_ENVIRONMENT_PASS_LINUX: "BOOST_ROOT OCL_BOOST_ARCHITECTURE CMAKE_GENERATOR"
+          CIBW_ENVIRONMENT_PASS_LINUX: "BOOST_ROOT OCL_BOOST_ARCHITECTURE CMAKE_GENERATOR OCL_INSTALL_BOOST OCL_BOOST_PREFIX"
       # - name: Compress Boost.Python
       #   shell: bash
       #   run: |
