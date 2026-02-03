@@ -41,6 +41,7 @@ def main() -> None:
                 "--wheel-dir",
                 action="store",
                 type="string",
+                default=".wheelhouse",
                 help=(
                     "Directory to store delocated wheels (default is to "
                     "overwrite input)"
