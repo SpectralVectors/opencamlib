@@ -64,6 +64,7 @@ jobs:
             --install-system-deps \
             --python-executable python \
             --python-pip-install \
+            --wheel-dir wheelhouse \
             --test
         env:
           CMAKE_GENERATOR: ${{ matrix.cmake_generator }}
