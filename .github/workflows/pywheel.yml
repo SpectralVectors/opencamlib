@@ -27,7 +27,7 @@ jobs:
             "linux-x86_64",
             "linux-aarch64",
           ]
-        python_version: "313"
+        python_version: ["313"]
         include:
           - os_arch: "windows-ia32"
             os: "windows-2022"
