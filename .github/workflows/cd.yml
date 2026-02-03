@@ -3,7 +3,7 @@ name: CD
 on:
   push:
     branches:
-
+      - master
     tags:
       - v*
   release:
@@ -214,6 +214,8 @@ jobs:
           CIBW_ENVIRONMENT_PASS_MACOS: "BOOST_ROOT OCL_BOOST_ARCHITECTURE OPENMP_PREFIX_MACOS"
           CIBW_ARCHS_LINUX: "${{ matrix.architecture }}"
           CIBW_ENVIRONMENT_LINUX: >
+            OCL_INSTALL_BOOST="1"
+            OCL_BOOST_PREFIX="$(pwd)"
             BOOST_ROOT="$(pwd)"
             OCL_BOOST_ARCHITECTURE="${{ matrix.boost_architecture }}"
             CMAKE_GENERATOR="Unix Makefiles"
