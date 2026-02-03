@@ -25,7 +25,7 @@ jobs:
             "macos-x86_64",
             "macos-arm64",
             "linux-x86_64",
-            "linux-aarch64",
+            # "linux-aarch64",
           ]
         python_version: ["313"]
         include:
