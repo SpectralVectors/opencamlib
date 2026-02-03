@@ -54,7 +54,6 @@ jobs:
           if [ "${{ matrix.os_short }}" == "linux" ]; then
             export OCL_INSTALL_BOOST="1"
             export OCL_BOOST_PREFIX="$(pwd)"
-            export PIP_CACHE_DIR="./wheelhouse"
           else
             export OCL_INSTALL_BOOST_FROM_REPO="1"
           fi
@@ -67,11 +66,15 @@ jobs:
             --test
         env:
           CMAKE_GENERATOR: ${{ matrix.cmake_generator }}
+      - name: CD Cache Dir
+        shell: bash
+        run: |
+          cd $(pip cache dir)
       - uses: actions/upload-artifact@v6
         with:
           name: ${{ matrix.os_short }}-python-${{ matrix.architecture }}
           path: |
-            ./wheelhouse/*.whl
+            *.whl
       - uses: actions/download-artifact@v6
         with:
           path: prebuilds
