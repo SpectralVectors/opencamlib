@@ -56,8 +56,8 @@ before-build = "cd {package} && bash ./install.sh --install-boost --boost-with-p
 
 [tool.cibuildwheel.linux]
 archs = ["x86_64", "aarch64"]
-before-all = "cd {package} && bash ./install.sh --install-ci-deps"
-before-build = "cd {package} && bash ./install.sh --install-boost --boost-with-python --python-executable python && cp --recursive --no-clobber boost_1_87_0 /host/home/runner/work/opencamlib/opencamlib"
+before-all = "cd {package} && bash ./install.sh --install-system-deps" #  --install-boost --boost-with-python
+before-build = "cd {package} && bash ./install.sh --build-library python  --build-type release --python-pip-install --python-executable python"
 
 [tool.cibuildwheel.macos]
 archs = ["x86_64", "arm64"]
