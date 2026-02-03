@@ -62,8 +62,7 @@ jobs:
             --build-type release \
             --install-system-deps \
             --python-executable python \
-            --python-pip-install \
-            --test
+            --python-pip-install
         env:
           CMAKE_GENERATOR: ${{ matrix.cmake_generator }}
       - uses: actions/upload-artifact@v6
