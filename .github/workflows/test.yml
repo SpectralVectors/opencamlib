@@ -64,7 +64,7 @@ jobs:
             --install-system-deps \
             --python-executable python \
             --python-pip-install \
-            --wheel-dir wheelhouse \
+            --wheel-dir ./wheelhouse \
             --test
         env:
           CMAKE_GENERATOR: ${{ matrix.cmake_generator }}
@@ -72,7 +72,7 @@ jobs:
         with:
           name: ${{ matrix.os_short }}-python-${{ matrix.architecture }}
           path: |
-            {$HOME}/wheelhouse/*.whl
+            ./wheelhouse/*.whl
       - uses: actions/download-artifact@v6
         with:
           path: prebuilds
