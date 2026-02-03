@@ -69,7 +69,7 @@ jobs:
         with:
           name: ${{ matrix.os_short }}-python-${{ matrix.architecture }}
           path: |
-            $(pip cache dir)/*.whl
+            "${build_dir}"/*.whl
       - uses: actions/download-artifact@v6
         with:
           path: prebuilds
