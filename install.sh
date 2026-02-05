@@ -152,18 +152,18 @@ fi
 
 install_system_dependencies() {
     if [ "${determined_os}" = "linux" ]; then
-        sudo apt update
-        sudo apt install -y --no-install-recommends git cmake curl build-essential
+        apt update
+        apt install -y --no-install-recommends git cmake curl build-essential
         if [ -n "${OCL_INSTALL_BOOST_FROM_REPO}" ]; then
-            sudo apt install -y --no-install-recommends libboost-dev
+            apt install -y --no-install-recommends libboost-dev
         fi
         if [ "${OCL_BUILD_LIBRARY}" = "python" ]; then
             if [ -z "${OCL_PYTHON_EXECUTABLE}" ]; then
-                sudo apt install -y --no-install-recommends python3
+                apt install -y --no-install-recommends python3
             fi
         fi
         if [ "${OCL_BUILD_LIBRARY}" = "nodejs" ]; then
-            sudo apt install -y --no-install-recommends nodejs npm
+            apt install -y --no-install-recommends nodejs npm
         fi
     elif [ "${determined_os}" = "macos" ]; then
         brew install libomp
@@ -205,16 +205,10 @@ install_ci_dependencies() {
         fi
     elif [ "${determined_os}" = "linux" ]; then
         if command_exists apt; then
-            if ! is_root; then
-                maybe_sudo="sudo"
-            fi
-            ${maybe_sudo} apt update
-            ${maybe_sudo} apt install -y --no-install-recommends curl
+            apt update
+            apt install -y --no-install-recommends curl
         elif command_exists yum; then
-            if ! is_root; then
-                maybe_sudo="sudo"
-            fi
-            ${maybe_sudo} yum install curl
+            yum install curl
         fi
     elif [ "${determined_os}" = "macos" ]; then
         OCL_MACOS_ARCHITECTURE="${OCL_MACOS_ARCHITECTURE:-arm64}"  # default to arm64
