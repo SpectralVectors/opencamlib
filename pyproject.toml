@@ -58,7 +58,7 @@ before-build = "cd {package} && bash ./install.sh --install-boost --boost-with-p
 
 [tool.cibuildwheel.linux]
 archs = ["x86_64", "aarch64"]
-before-all = "export OCL_INSTALL_BOOST=1 export OCL_BOOST_PREFIX=$(pwd) && cd {package} && bash ./install.sh --install-system-deps"
+before-all = "export OCL_INSTALL_BOOST=1 export OCL_BOOST_PREFIX=$(pwd)" # && cd {package} && bash ./install.sh --install-system-deps"
 before-build = "cd {package} && bash ./install.sh --build-library python --build-type release --python-executable python"  # "cd {package} && bash ./install.sh --install-boost --boost-with-python --python-executable python && cp --recursive --no-clobber boost_1_87_0 /host/home/runner/work/opencamlib/opencamlib"
 
 [tool.cibuildwheel.macos]
