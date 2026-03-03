@@ -112,7 +112,7 @@ jobs:
           "linux-aarch64",
         ]
         python_version: [
-          "37",
+          # "37",
           # "38",
           # "39",
           # "310",
@@ -265,3 +265,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           files: |
             dist/*
+            ./wheelhouse/*.whl
