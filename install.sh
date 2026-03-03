@@ -222,7 +222,7 @@ install_ci_dependencies() {
         if [ "${OCL_MACOS_ARCHITECTURE}" = "arm64" ]; then
             libomp_tar_loc=$(brew fetch --bottle-tag=arm64_sonoma libomp | grep -i downloaded | grep tar.gz | cut -f2 -d ":" | xargs echo)
         else
-            libomp_tar_loc=$(brew fetch --bottle-tag=sonoma libomp | grep -i downloaded | grep tar.gz | cut -f2 -d ":" | xargs echo)
+            libomp_tar_loc=$(brew fetch libomp | grep -i downloaded | grep tar.gz | cut -f2 -d ":" | xargs echo) # --bottle-tag=sonoma
         fi
         temp_dir="/tmp"
         cp "${libomp_tar_loc}" "${temp_dir}/libomp.tar.gz"
