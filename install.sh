@@ -234,8 +234,13 @@ install_ci_dependencies() {
         #tar -xzf "${temp_dir}/libomp.tar.gz" -C "${temp_dir}/libomp"
         #libomp_prefix=$(find "${temp_dir}/libomp/libomp" -depth 1 | head -1)
         #export OPENMP_PREFIX_MACOS="${temp_dir}/libomp/libomp/fixed"
-        omp_header=$(find "omp.h" -depth 1 | head -1)
-        echo ${omp_header}
+        # omp_header=$(find "omp.h" -depth 1 | head -1)
+        # echo ${omp_header}
+
+        ls -a /opt/homebrew/Cellar/libomp/22.1.0
+        ls -a /opt/homebrew/Cellar/libomp/22.1.0/lib
+        ls -a /opt/homebrew/Cellar/libomp/22.1.0/include
+        
         cp "/opt/homebrew/Cellar/libomp/22.1.0/lib/libomp.dylib" '/tmp/libomp/libomp/fixed/lib'
         # mv "${libomp_prefix}" "${OPENMP_PREFIX_MACOS}"
     fi
