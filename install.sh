@@ -244,7 +244,7 @@ install_ci_dependencies() {
         
         # ls -a /opt/homebrew/Cellar/libomp/22.1.0/include
         
-        cp "/opt/homebrew/Cellar/libomp/22.1.0/lib/libomp.dylib" '/tmp/libomp/libomp/fixed/lib'
+        cp "/usr/local/Cellar/libomp/22.1.0/lib/libomp.dylib" '/tmp/libomp/libomp/fixed/lib'
         # mv "${libomp_prefix}" "${OPENMP_PREFIX_MACOS}"
     fi
 }
