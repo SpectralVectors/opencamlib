@@ -218,6 +218,7 @@ install_ci_dependencies() {
         fi
     elif [ "${determined_os}" = "macos" ]; then
         brew install libomp
+        mkdir /tmp/libomp/libomp/fixed
         cp  "/usr/local/opt/libomp/lib/libomp.dylib" '/tmp/libomp/libomp/fixed/'
         export OPENMP_PREFIX_MACOS="${temp_dir}/libomp/libomp/fixed"
         # export OPENMP_PREFIX_MACOS="/opt/homebrew/opt/libomp/lib" "/usr/local/opt/libomp/lib/libomp.dylib" '/tmp/libomp/libomp/fixed/lib/libomp.dylib'
