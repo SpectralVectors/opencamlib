@@ -218,7 +218,7 @@ install_ci_dependencies() {
         fi
     elif [ "${determined_os}" = "macos" ]; then
         brew install libomp
-        export OPENMP_PREFIX_MACOS="/opt/homebrew/opt/libomp/lib"
+        # export OPENMP_PREFIX_MACOS="/opt/homebrew/opt/libomp/lib"
         # OCL_MACOS_ARCHITECTURE="${OCL_MACOS_ARCHITECTURE:-arm64}"  # default to arm64
         # prettyprint "Downloading libomp for: " "${OCL_MACOS_ARCHITECTURE}"
         # if [ "${OCL_MACOS_ARCHITECTURE}" = "arm64" ]; then
@@ -228,13 +228,13 @@ install_ci_dependencies() {
         # fi
         # echo brew info libomp
         # echo "Libomp tar location: ${libomp_tar_loc}"
-        # temp_dir="/tmp"
-        # cp "${libomp_tar_loc}" "${temp_dir}/libomp.tar.gz"
-        # mkdir "${temp_dir}/libomp" || true
-        # tar -xzf "${temp_dir}/libomp.tar.gz" -C "${temp_dir}/libomp"
-        # libomp_prefix=$(find "${temp_dir}/libomp/libomp" -depth 1 | head -1)
-        # export OPENMP_PREFIX_MACOS="${temp_dir}/libomp/libomp/fixed"
-        # mv "${libomp_prefix}" "${OPENMP_PREFIX_MACOS}"
+        temp_dir="/tmp"
+        cp "/opt/homebrew/opt/libomp/" "${temp_dir}/libomp.tar.gz"
+        mkdir "${temp_dir}/libomp" || true
+        tar -xzf "${temp_dir}/libomp.tar.gz" -C "${temp_dir}/libomp"
+        libomp_prefix=$(find "${temp_dir}/libomp/libomp" -depth 1 | head -1)
+        export OPENMP_PREFIX_MACOS="${temp_dir}/libomp/libomp/fixed"
+        mv "${libomp_prefix}" "${OPENMP_PREFIX_MACOS}"
     fi
 }
 
