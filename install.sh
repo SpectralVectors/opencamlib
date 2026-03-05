@@ -231,11 +231,11 @@ install_ci_dependencies() {
 
         temp_dir="/tmp"
         # cp "/opt/homebrew/opt/libomp/" "${temp_dir}/libomp.tar.gz"
-        mkdir "${temp_dir}/libomp/libomp" || true
+        mkdir "${temp_dir}/libomp/libomp/fixed" || true
         # tar -xzf "${temp_dir}/libomp.tar.gz" -C "${temp_dir}/libomp"
         # libomp_prefix=$(find "${temp_dir}/libomp/libomp" -depth 1 | head -1)
         # export OPENMP_PREFIX_MACOS="${temp_dir}/libomp/libomp/fixed"
-        cp  "/usr/local/opt/libomp/lib/libomp.dylib" '/tmp/libomp/libomp/fixed/'
+        ln -s  "/usr/local/opt/libomp/lib/libomp.dylib" '/tmp/libomp/libomp/fixed/'
         export OPENMP_PREFIX_MACOS="${temp_dir}/libomp/libomp/fixed"
         # mv "${libomp_prefix}" "${OPENMP_PREFIX_MACOS}"
     fi
