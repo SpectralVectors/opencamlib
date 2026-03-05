@@ -22,7 +22,7 @@
 #include <boost/foreach.hpp> 
 
 #ifdef _OPENMP
-    #include </opt/homebrew/Cellar/libomp/22.1.0/include/omp.h>
+    #include </usr/local/Cellar/libomp/22.1.0/include/omp.h>
 #endif
 
 #include "millingcutter.hpp"
