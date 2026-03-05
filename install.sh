@@ -217,6 +217,7 @@ install_ci_dependencies() {
             ${maybe_sudo} yum install curl
         fi
     elif [ "${determined_os}" = "macos" ]; then
+        arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
         arch -x86_64 brew install libomp
         #mkdir /tmp/libomp/libomp/fixed
 
