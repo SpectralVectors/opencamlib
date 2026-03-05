@@ -57,43 +57,43 @@ jobs:
           #   os_short: "linux"
           #   architecture: "aarch64"
           #   docker_image: "dockcross/linux-arm64-lts:latest"
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: cxxlib
-        shell: bash
-        run: |
-          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
-            version="${GITHUB_REF##*/}"
-          else
-            version="$(date '+%Y.%-m.%-d').dev${GITHUB_RUN_NUMBER}"
-          fi
-          echo "${version}" > src/git-tag.txt
+    # steps:
+    #   - uses: actions/checkout@v3
+    #     with:
+    #       fetch-depth: 0
+    #   - name: cxxlib
+    #     shell: bash
+    #     run: |
+    #       if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+    #         version="${GITHUB_REF##*/}"
+    #       else
+    #         version="$(date '+%Y.%-m.%-d').dev${GITHUB_RUN_NUMBER}"
+    #       fi
+    #       echo "${version}" > src/git-tag.txt
 
-          if [ "${{ matrix.docker_image }}" != "" ]; then
-            export OCL_DOCKER_IMAGE="${{ matrix.docker_image }}"
-          fi
-          if [ "${{ matrix.macos_architecture }}" != "" ]; then
-            export OCL_MACOS_ARCHITECTURE="${{ matrix.architecture }}"
-          fi
-          if [ "${{ matrix.cmake_generator_platform }}" != "" ]; then
-            export OCL_GENERATOR_PLATFORM="${{ matrix.cmake_generator_platform }}"
-          fi
+    #       if [ "${{ matrix.docker_image }}" != "" ]; then
+    #         export OCL_DOCKER_IMAGE="${{ matrix.docker_image }}"
+    #       fi
+    #       if [ "${{ matrix.macos_architecture }}" != "" ]; then
+    #         export OCL_MACOS_ARCHITECTURE="${{ matrix.architecture }}"
+    #       fi
+    #       if [ "${{ matrix.cmake_generator_platform }}" != "" ]; then
+    #         export OCL_GENERATOR_PLATFORM="${{ matrix.cmake_generator_platform }}"
+    #       fi
 
-          ./install.sh \
-            --build-library cxx \
-            --build-type release \
-            --install-ci-deps \
-            --install-boost \
-            --boost-prefix $(pwd) \
-            --install \
-            --install-prefix $(pwd)/dist
-      - uses: actions/upload-artifact@v6
-        with:
-          name: ${{ matrix.os_short }}-cxx-${{ matrix.architecture }}
-          path: |
-            dist
+    #       ./install.sh \
+    #         --build-library cxx \
+    #         --build-type release \
+    #         --install-ci-deps \
+    #         --install-boost \
+    #         --boost-prefix $(pwd) \
+    #         --install \
+    #         --install-prefix $(pwd)/dist
+    #   - uses: actions/upload-artifact@v6
+    #     with:
+    #       name: ${{ matrix.os_short }}-cxx-${{ matrix.architecture }}
+    #       path: |
+    #         dist
 
   python:
     name: ${{ matrix.os_short }} python ${{ matrix.architecture }} cp${{ matrix.python_version }}
@@ -120,9 +120,9 @@ jobs:
           # "312",
           "313",
         ]
-        exclude:
-          - os_arch: "macos-arm64"
-            python_version: "37"
+        # exclude:
+        #   - os_arch: "macos-arm64"
+        #     python_version: "37"
         include:
           # - os_arch: "windows-ia32"
           #   os: "windows-2022"
