@@ -214,7 +214,7 @@ jobs:
             OCL_MACOS_ARCHITECTURE="${{ matrix.architecture }}"
             OCL_BOOST_ARCHITECTURE="${{ matrix.boost_architecture }}"
             BOOST_INCLUDEDIR="/tmp"
-            OPENMP_PREFIX_MACOS="/tmp/libomp/libomp/fixed"
+            OPENMP_PREFIX_MACOS="/opt/homebrew/opt/libomp/lib" #  "/tmp/libomp/libomp/fixed"
           CIBW_ENVIRONMENT_PASS_MACOS: "BOOST_ROOT OCL_BOOST_ARCHITECTURE OPENMP_PREFIX_MACOS"
           # CIBW_ARCHS_LINUX: "${{ matrix.architecture }}"
           # CIBW_ENVIRONMENT_LINUX: >
