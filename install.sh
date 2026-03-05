@@ -224,6 +224,7 @@ install_ci_dependencies() {
         else
             libomp_tar_loc=$(brew fetch --bottle-tag=sonoma libomp | grep -i downloaded | grep tar.gz | cut -f2 -d ":" | xargs echo)
         fi
+        echo brew info libomp
         echo "Libomp tar location: ${libomp_tar_loc}"
         temp_dir="/tmp"
         cp "${libomp_tar_loc}" "${temp_dir}/libomp.tar.gz"
