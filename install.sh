@@ -222,7 +222,7 @@ install_ci_dependencies() {
         #chmod +x /usr/local/Homebrew/bin/brew
         softwareupdate --install-rosetta -i
         arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        arch -x86_64 brew install libomp  # /usr/local/Homebrew/bin/
+        arch -x86_64 /usr/local/bin/brew install libomp  # /usr/local/Homebrew/bin/
         #mkdir /tmp/libomp/libomp/fixed
 
         # export OPENMP_PREFIX_MACOS="/opt/homebrew/opt/libomp/lib" "/usr/local/opt/libomp/lib/libomp.dylib" '/tmp/libomp/libomp/fixed/lib/libomp.dylib'
