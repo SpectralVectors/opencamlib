@@ -210,12 +210,14 @@ jobs:
           # CIBW_ENVIRONMENT_PASS_WINDOWS: "BOOST_ROOT OCL_BOOST_ADDRESS_MODEL OCL_BOOST_ARCHITECTURE CMAKE_GENERATOR CMAKE_GENERATOR_PLATFORM"
           CIBW_ARCHS_MACOS: "${{ matrix.architecture }}"
           CIBW_ENVIRONMENT_MACOS: >
+            LDFLAGS="-L/opt/homebrew/opt/libomp/lib"
+            CPPFLAGS="-I/opt/homebrew/opt/libomp/include"
             BOOST_ROOT="$(pwd)"
             OCL_MACOS_ARCHITECTURE="${{ matrix.architecture }}"
             OCL_BOOST_ARCHITECTURE="${{ matrix.boost_architecture }}"
             BOOST_INCLUDEDIR="/tmp"
             OPENMP_PREFIX_MACOS="/tmp/libomp/libomp/fixed"
-          CIBW_ENVIRONMENT_PASS_MACOS: "BOOST_ROOT OCL_BOOST_ARCHITECTURE OPENMP_PREFIX_MACOS"
+          CIBW_ENVIRONMENT_PASS_MACOS: "LDFLAGS CPPFLAGS BOOST_ROOT OCL_BOOST_ARCHITECTURE OPENMP_PREFIX_MACOS"
           # CIBW_ARCHS_LINUX: "${{ matrix.architecture }}"
           # CIBW_ENVIRONMENT_LINUX: >
           #   BOOST_ROOT="$(pwd)"
