@@ -219,7 +219,7 @@ install_ci_dependencies() {
     elif [ "${determined_os}" = "macos" ]; then
         # arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
         # arch -x86_64 brew install libomp
-        arch -x86_64 /usr/local/Homebrew/bin/brew install libomp
+        arch -x86_64 ./usr/local/Homebrew/bin/brew install libomp
         #mkdir /tmp/libomp/libomp/fixed
 
         # export OPENMP_PREFIX_MACOS="/opt/homebrew/opt/libomp/lib" "/usr/local/opt/libomp/lib/libomp.dylib" '/tmp/libomp/libomp/fixed/lib/libomp.dylib'
