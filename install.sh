@@ -218,7 +218,9 @@ install_ci_dependencies() {
         fi
     elif [ "${determined_os}" = "macos" ]; then
         brew install libomp
-        # export OPENMP_PREFIX_MACOS="/opt/homebrew/opt/libomp/lib"
+        cp  "/usr/local/opt/libomp/lib/libomp.dylib" '/tmp/libomp/libomp/fixed/'
+        export OPENMP_PREFIX_MACOS="${temp_dir}/libomp/libomp/fixed"
+        # export OPENMP_PREFIX_MACOS="/opt/homebrew/opt/libomp/lib" "/usr/local/opt/libomp/lib/libomp.dylib" '/tmp/libomp/libomp/fixed/lib/libomp.dylib'
         # OCL_MACOS_ARCHITECTURE="${OCL_MACOS_ARCHITECTURE:-arm64}"  # default to arm64
         # prettyprint "Downloading libomp for: " "${OCL_MACOS_ARCHITECTURE}"
         # if [ "${OCL_MACOS_ARCHITECTURE}" = "arm64" ]; then
