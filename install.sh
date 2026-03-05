@@ -231,14 +231,14 @@ install_ci_dependencies() {
 
         temp_dir="/tmp"
         #cp "/opt/homebrew/Cellar/libomp/22.1.0" "${temp_dir}/libomp.tar.gz"
-        mkdir -p "${temp_dir}/libomp/libomp/fixed" || true
+        mkdir -p "${temp_dir}/libomp/libomp/fixed/lib" || true
         #tar -xzf "${temp_dir}/libomp.tar.gz" -C "${temp_dir}/libomp"
         #libomp_prefix=$(find "${temp_dir}/libomp/libomp" -depth 1 | head -1)
         #export OPENMP_PREFIX_MACOS="${temp_dir}/libomp/libomp/fixed"
         #cp  "/opt/homebrew/Cellar/libomp/22.1.0/lib/libomp.dylib" '/tmp/libomp/libomp/fixed/lib/libomp.dylib' # '/tmp/libomp/libomp/fixed'
         ls -a /opt/homebrew/Cellar/libomp/22.1.0/lib
         #ln -s "/opt/homebrew/Cellar/libomp/22.1.0/lib/libomp.dylib" '/tmp/libomp/libomp/fixed/lib' && ls -a /tmp/libomp/libomp/fixed/lib
-        cp "/opt/homebrew/Cellar/libomp/22.1.0/lib" '/tmp/libomp/libomp/fixed/lib' && ls -a /tmp/libomp/libomp/fixed/lib
+        cp "/opt/homebrew/Cellar/libomp/22.1.0/lib/libomp.dylib" '/tmp/libomp/libomp/fixed/lib' && ls -a /tmp/libomp/libomp/fixed/lib
         # mv "/opt/homebrew/Cellar/libomp/22.1.0/lib/libomp.dylib" '/tmp/libomp/libomp/fixed/lib' && ls -a /tmp/libomp/libomp/fixed/lib
         # mv "${libomp_prefix}" "${OPENMP_PREFIX_MACOS}"
     fi
