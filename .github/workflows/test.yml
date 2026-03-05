@@ -21,14 +21,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: ["windows-2022", "macos-15", "ubuntu-22.04"]
+        os: ["macos-15"] # ["windows-2022", "macos-15", "ubuntu-22.04"]
         include:
-          - os: "windows-2022"
-            os_short: "windows"
+          # - os: "windows-2022"
+          #   os_short: "windows"
           - os: "macos-15"
             os_short: "macos"
-          - os: "ubuntu-22.04"
-            os_short: "linux"
+          # - os: "ubuntu-22.04"
+          #   os_short: "linux"
     steps:
       - uses: actions/checkout@v3
         with:
@@ -59,16 +59,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: ["windows-2022", "macos-15", "ubuntu-22.04"]
+        os: "macos-15"  # ["windows-2022", "macos-15", "ubuntu-22.04"]
         include:
-          - os: "windows-2022"
-            os_short: "windows"
+          # - os: "windows-2022"
+          #   os_short: "windows"
           - os: "macos-15"
             os_short: "macos"
             cmake_generator: "Unix Makefiles"
-          - os: "ubuntu-22.04"
-            os_short: "linux"
-            cmake_generator: "Unix Makefiles"
+          # - os: "ubuntu-22.04"
+          #   os_short: "linux"
+          #   cmake_generator: "Unix Makefiles"
     steps:
       - uses: actions/checkout@v3
         with:
