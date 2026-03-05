@@ -217,7 +217,7 @@ install_ci_dependencies() {
             ${maybe_sudo} yum install curl
         fi
     elif [ "${determined_os}" = "macos" ]; then
-        brew install --build-bottle --bottle-arch=x86_64 libomp
+        arch -x86_64 brew install libomp
         #mkdir /tmp/libomp/libomp/fixed
 
         # export OPENMP_PREFIX_MACOS="/opt/homebrew/opt/libomp/lib" "/usr/local/opt/libomp/lib/libomp.dylib" '/tmp/libomp/libomp/fixed/lib/libomp.dylib'
