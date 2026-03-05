@@ -107,7 +107,7 @@ jobs:
           # "windows-x64",
           # "windows-arm64",
           "macos-x86_64",
-          "macos-arm64",
+          #"macos-arm64",
           # "linux-x86_64",
           # "linux-aarch64",
         ]
@@ -153,11 +153,11 @@ jobs:
             os_short: "macos"
             architecture: "x86_64"
             boost_architecture: "x86"
-          - os_arch: "macos-arm64"
-            #os: "macos-15"
-            os_short: "macos"
-            architecture: "arm64"
-            boost_architecture: "arm"
+          # - os_arch: "macos-arm64"
+          #   #os: "macos-15"
+          #   os_short: "macos"
+          #   architecture: "arm64"
+          #   boost_architecture: "arm"
           # - os_arch: linux-x86_64
           #   os: "ubuntu-22.04"
           #   os_short: "linux"
