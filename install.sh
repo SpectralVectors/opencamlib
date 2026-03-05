@@ -242,7 +242,7 @@ install_ci_dependencies() {
         # omp_header=$(find "omp.h" -depth 1 | head -1)
         # echo ${omp_header}
         
-        ls -a /opt/homebrew/Cellar/libomp/22.1.0/include
+        # ls -a /opt/homebrew/Cellar/libomp/22.1.0/include
         
         cp "/opt/homebrew/Cellar/libomp/22.1.0/lib/libomp.dylib" '/tmp/libomp/libomp/fixed/lib'
         # mv "${libomp_prefix}" "${OPENMP_PREFIX_MACOS}"
