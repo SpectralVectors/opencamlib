@@ -20,7 +20,7 @@
 */
 
 #ifdef _OPENMP
-#include <omp.h>
+#include </usr/local/opt/libomp/include/omp.h>
 #endif
 
 #include "batchpushcutter.hpp"
