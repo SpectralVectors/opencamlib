@@ -21,24 +21,24 @@ jobs:
       fail-fast: false
       matrix:
         os_arch: [
-          "windows-ia32",
-          "windows-x64",
+          # "windows-ia32",
+          # "windows-x64",
           "macos-x86_64",
           "macos-arm64",
-          "linux-x86_64",
-          "linux-aarch64",
+          # "linux-x86_64",
+          # "linux-aarch64",
         ]
         include:
-          - os_arch: "windows-ia32"
-            os: "windows-2022"
-            os_short: "windows"
-            architecture: "ia32"
-            cmake_generator_platform: "Win32"
-          - os_arch: "windows-x64"
-            os: "windows-2022"
-            os_short: "windows"
-            architecture: "x64"
-            cmake_generator_platform: "x64"
+          # - os_arch: "windows-ia32"
+          #   os: "windows-2022"
+          #   os_short: "windows"
+          #   architecture: "ia32"
+          #   cmake_generator_platform: "Win32"
+          # - os_arch: "windows-x64"
+          #   os: "windows-2022"
+          #   os_short: "windows"
+          #   architecture: "x64"
+          #   cmake_generator_platform: "x64"
           - os_arch: "macos-x86_64"
             os: "macos-15"
             os_short: "macos"
@@ -47,16 +47,16 @@ jobs:
             os: "macos-15"
             os_short: "macos"
             architecture: "arm64"
-          - os_arch: linux-x86_64
-            os: "ubuntu-22.04"
-            os_short: "linux"
-            architecture: "x86_64"
-            docker_image: "dockcross/linux-x64:latest"
-          - os_arch: linux-aarch64
-            os: "ubuntu-22.04"
-            os_short: "linux"
-            architecture: "aarch64"
-            docker_image: "dockcross/linux-arm64-lts:latest"
+          # - os_arch: linux-x86_64
+          #   os: "ubuntu-22.04"
+          #   os_short: "linux"
+          #   architecture: "x86_64"
+          #   docker_image: "dockcross/linux-x64:latest"
+          # - os_arch: linux-aarch64
+          #   os: "ubuntu-22.04"
+          #   os_short: "linux"
+          #   architecture: "aarch64"
+          #   docker_image: "dockcross/linux-arm64-lts:latest"
     steps:
       - uses: actions/checkout@v3
         with:
@@ -103,13 +103,13 @@ jobs:
       fail-fast: false
       matrix:
         os_arch: [
-          "windows-ia32",
-          "windows-x64",
+          # "windows-ia32",
+          # "windows-x64",
           # "windows-arm64",
           "macos-x86_64",
           "macos-arm64",
-          "linux-x86_64",
-          "linux-aarch64",
+          # "linux-x86_64",
+          # "linux-aarch64",
         ]
         python_version: [
           # "37",
@@ -124,22 +124,22 @@ jobs:
           - os_arch: "macos-arm64"
             python_version: "37"
         include:
-          - os_arch: "windows-ia32"
-            os: "windows-2022"
-            os_short: "windows"
-            architecture: "ia32"
-            boost_architecture: "x86"
-            cibuildwheel_architecture: "x86"
-            boost_address_model: "32"
-            cmake_generator_platform: "Win32"
-          - os_arch: "windows-x64"
-            os: "windows-2022"
-            os_short: "windows"
-            architecture: "x64"
-            boost_architecture: "x86"
-            boost_address_model: "64"
-            cibuildwheel_architecture: "AMD64"
-            cmake_generator_platform: "x64"
+          # - os_arch: "windows-ia32"
+          #   os: "windows-2022"
+          #   os_short: "windows"
+          #   architecture: "ia32"
+          #   boost_architecture: "x86"
+          #   cibuildwheel_architecture: "x86"
+          #   boost_address_model: "32"
+          #   cmake_generator_platform: "Win32"
+          # - os_arch: "windows-x64"
+          #   os: "windows-2022"
+          #   os_short: "windows"
+          #   architecture: "x64"
+          #   boost_architecture: "x86"
+          #   boost_address_model: "64"
+          #   cibuildwheel_architecture: "AMD64"
+          #   cmake_generator_platform: "x64"
           # - os_arch: "windows-arm64"
           #   os: "windows-2022"
           #   os_short: "windows"
@@ -158,16 +158,16 @@ jobs:
             os_short: "macos"
             architecture: "arm64"
             boost_architecture: "arm"
-          - os_arch: linux-x86_64
-            os: "ubuntu-22.04"
-            os_short: "linux"
-            architecture: "x86_64"
-            boost_architecture: "x86"
-          - os_arch: linux-aarch64
-            os: "ubuntu-22.04"
-            os_short: "linux"
-            architecture: "aarch64"
-            boost_architecture: "arm"
+          # - os_arch: linux-x86_64
+          #   os: "ubuntu-22.04"
+          #   os_short: "linux"
+          #   architecture: "x86_64"
+          #   boost_architecture: "x86"
+          # - os_arch: linux-aarch64
+          #   os: "ubuntu-22.04"
+          #   os_short: "linux"
+          #   architecture: "aarch64"
+          #   boost_architecture: "arm"
     steps:
       - uses: actions/checkout@v3
         with:
@@ -199,15 +199,15 @@ jobs:
           CIBW_BUILD: "cp${{ matrix.python_version }}-*"
           CIBW_PLATFORM: "${{ matrix.os_short }}"
           CIBW_BUILD_VERBOSITY: "1"
-          CIBW_ARCHS_WINDOWS: "${{ matrix.cibuildwheel_architecture }}"
-          CIBW_ENVIRONMENT_WINDOWS: >
-            BOOST_ROOT="$(cygpath -w $(pwd))"
-            OCL_BOOST_ADDRESS_MODEL="${{ matrix.boost_address_model }}"
-            OCL_BOOST_ARCHITECTURE="${{ matrix.boost_architecture }}"
-            BOOST_INCLUDEDIR="/tmp"
-            CMAKE_GENERATOR="Visual Studio 17 2022"
-            CMAKE_GENERATOR_PLATFORM="${{ matrix.cmake_generator_platform }}"
-          CIBW_ENVIRONMENT_PASS_WINDOWS: "BOOST_ROOT OCL_BOOST_ADDRESS_MODEL OCL_BOOST_ARCHITECTURE CMAKE_GENERATOR CMAKE_GENERATOR_PLATFORM"
+          # CIBW_ARCHS_WINDOWS: "${{ matrix.cibuildwheel_architecture }}"
+          # CIBW_ENVIRONMENT_WINDOWS: >
+          #   BOOST_ROOT="$(cygpath -w $(pwd))"
+          #   OCL_BOOST_ADDRESS_MODEL="${{ matrix.boost_address_model }}"
+          #   OCL_BOOST_ARCHITECTURE="${{ matrix.boost_architecture }}"
+          #   BOOST_INCLUDEDIR="/tmp"
+          #   CMAKE_GENERATOR="Visual Studio 17 2022"
+          #   CMAKE_GENERATOR_PLATFORM="${{ matrix.cmake_generator_platform }}"
+          # CIBW_ENVIRONMENT_PASS_WINDOWS: "BOOST_ROOT OCL_BOOST_ADDRESS_MODEL OCL_BOOST_ARCHITECTURE CMAKE_GENERATOR CMAKE_GENERATOR_PLATFORM"
           CIBW_ARCHS_MACOS: "${{ matrix.architecture }}"
           CIBW_ENVIRONMENT_MACOS: >
             BOOST_ROOT="$(pwd)"
@@ -216,13 +216,13 @@ jobs:
             BOOST_INCLUDEDIR="/tmp"
             OPENMP_PREFIX_MACOS="/tmp/libomp/libomp/fixed"
           CIBW_ENVIRONMENT_PASS_MACOS: "BOOST_ROOT OCL_BOOST_ARCHITECTURE OPENMP_PREFIX_MACOS"
-          CIBW_ARCHS_LINUX: "${{ matrix.architecture }}"
-          CIBW_ENVIRONMENT_LINUX: >
-            BOOST_ROOT="$(pwd)"
-            OCL_BOOST_ARCHITECTURE="${{ matrix.boost_architecture }}"
-            BOOST_INCLUDEDIR="/tmp"
-            CMAKE_GENERATOR="Unix Makefiles"
-          CIBW_ENVIRONMENT_PASS_LINUX: "BOOST_ROOT BOOST_INCLUDEDIR OCL_BOOST_ARCHITECTURE CMAKE_GENERATOR"
+          # CIBW_ARCHS_LINUX: "${{ matrix.architecture }}"
+          # CIBW_ENVIRONMENT_LINUX: >
+          #   BOOST_ROOT="$(pwd)"
+          #   OCL_BOOST_ARCHITECTURE="${{ matrix.boost_architecture }}"
+          #   BOOST_INCLUDEDIR="/tmp"
+          #   CMAKE_GENERATOR="Unix Makefiles"
+          # CIBW_ENVIRONMENT_PASS_LINUX: "BOOST_ROOT BOOST_INCLUDEDIR OCL_BOOST_ARCHITECTURE CMAKE_GENERATOR"
       # - name: Compress Boost.Python
       #   shell: bash
       #   run: |
@@ -254,11 +254,11 @@ jobs:
         shell: bash
         run: |
           mkdir dist
-          zip -r dist/linux-cxx-x86_64.zip prebuilds/linux-cxx-x86_64
-          zip -r dist/macos-cxx-arm64.zip prebuilds/macos-cxx-arm64
-          zip -r dist/macos-cxx-x86_64.zip prebuilds/macos-cxx-x86_64
-          zip -r dist/windows-cxx-ia32.zip prebuilds/windows-cxx-ia32
-          zip -r dist/windows-cxx-x64.zip prebuilds/windows-cxx-x64
+          # zip -r dist/linux-cxx-x86_64.zip prebuilds/linux-cxx-x86_64
+          # zip -r dist/macos-cxx-arm64.zip prebuilds/macos-cxx-arm64
+          # zip -r dist/macos-cxx-x86_64.zip prebuilds/macos-cxx-x86_64
+          # zip -r dist/windows-cxx-ia32.zip prebuilds/windows-cxx-ia32
+          # zip -r dist/windows-cxx-x64.zip prebuilds/windows-cxx-x64
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
