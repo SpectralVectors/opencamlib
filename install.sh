@@ -219,7 +219,8 @@ install_ci_dependencies() {
     elif [ "${determined_os}" = "macos" ]; then
         # arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
         # arch -x86_64 brew install libomp
-        chmod +x /usr/local/Homebrew/bin/brew
+        #chmod +x /usr/local/Homebrew/bin/brew
+        softwareupdate --install-rosetta -y
         arch -x86_64 /usr/local/Homebrew/bin/brew install libomp
         #mkdir /tmp/libomp/libomp/fixed
 
