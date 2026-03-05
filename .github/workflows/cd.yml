@@ -13,22 +13,22 @@ on:
       - published
 
 jobs:
-  cxx:
-    name: ${{ matrix.os_short }} c++ ${{ matrix.architecture }}
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 120
-    strategy:
-      fail-fast: false
-      matrix:
-        os_arch: [
+  # cxx:
+  #   name: ${{ matrix.os_short }} c++ ${{ matrix.architecture }}
+  #   runs-on: ${{ matrix.os }}
+  #   timeout-minutes: 120
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       os_arch: [
           # "windows-ia32",
           # "windows-x64",
-          "macos-x86_64",
-          "macos-arm64",
+          # "macos-x86_64",
+          # "macos-arm64",
           # "linux-x86_64",
           # "linux-aarch64",
-        ]
-        include:
+        # ]
+        # include:
           # - os_arch: "windows-ia32"
           #   os: "windows-2022"
           #   os_short: "windows"
@@ -39,14 +39,14 @@ jobs:
           #   os_short: "windows"
           #   architecture: "x64"
           #   cmake_generator_platform: "x64"
-          - os_arch: "macos-x86_64"
-            os: "macos-15"
-            os_short: "macos"
-            architecture: "x86_64"
-          - os_arch: "macos-arm64"
-            os: "macos-15"
-            os_short: "macos"
-            architecture: "arm64"
+          # - os_arch: "macos-x86_64"
+          #   os: "macos-15"
+          #   os_short: "macos"
+          #   architecture: "x86_64"
+          # - os_arch: "macos-arm64"
+          #   os: "macos-15"
+          #   os_short: "macos"
+          #   architecture: "arm64"
           # - os_arch: linux-x86_64
           #   os: "ubuntu-22.04"
           #   os_short: "linux"
