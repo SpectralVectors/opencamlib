@@ -237,7 +237,7 @@ install_ci_dependencies() {
         #export OPENMP_PREFIX_MACOS="${temp_dir}/libomp/libomp/fixed"
         ln -s  "/opt/homebrew/Cellar/libomp/22.1.0/lib/libomp.dylib" '/tmp/libomp/libomp/fixed/'
         #export OPENMP_PREFIX_MACOS="${temp_dir}/libomp/libomp/fixed"
-        mv "${libomp_prefix}" "${OPENMP_PREFIX_MACOS}"
+        # mv "${libomp_prefix}" "${OPENMP_PREFIX_MACOS}"
     fi
 }
 
