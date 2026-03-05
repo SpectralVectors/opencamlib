@@ -22,7 +22,7 @@
 #include <boost/foreach.hpp>
 
 #ifdef _OPENMP // this should really not be a check for Windows, but a check for OpenMP
-    #include </usr/local/opt/libomp/include/omp.h>
+    #include </opt/homebrew/Cellar/libomp/22.1.0/include/omp.h>
 #endif
 
 #include "point.hpp"
