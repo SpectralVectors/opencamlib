@@ -149,7 +149,7 @@ jobs:
           #   cibuildwheel_architecture: "ARM64"
           #   cmake_generator_platform: "ARM64"
           - os_arch: "macos-x86_64"
-            #os: "macos-15"
+            os: "macos-15"
             os_short: "macos"
             architecture: "x86_64"
             boost_architecture: "x86"
